@@ -1,5 +1,7 @@
-import kotlinx.coroutines.experimental.*
-import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.experimental.Job
+import kotlinx.coroutines.experimental.delay
+import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.experimental.runBlocking
 import kotlin.system.measureTimeMillis
 
 /*
@@ -20,7 +22,7 @@ fun main(args: Array<String>) {
             val riceJob = cookRice()
             prepareVegetables()
             prepareFish()
-//            riceJob.join()
+            riceJob.join()
             rollTheSushi()
             println("Bon Appétit!")
         }
