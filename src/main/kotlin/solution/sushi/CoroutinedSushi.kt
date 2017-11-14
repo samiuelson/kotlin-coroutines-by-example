@@ -24,14 +24,6 @@ object CoroutinedSushi : Exercise {
         println("Let's make some Sushi! ${Thread.currentThread()}")
 
         val context = newSingleThreadContext("sushi")
-//        run {
-//            val riceJob = launch(context) { cookRice() }
-//            launch(context) { prepareVegetables() }
-//            launch(context) { prepareFish() }
-//            riceJob.join()
-//            rollTheSushi()
-//            run { println("Bon Appétit! ${Thread.currentThread()}")}
-//        }
             val j = launch(context) {
                 val job = launch(context) { cookRice() }
                 prepareVegetables()
