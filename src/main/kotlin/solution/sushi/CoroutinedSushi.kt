@@ -2,6 +2,7 @@ package solution.sushi
 
 import exercise.Exercise
 import kotlinx.coroutines.experimental.*
+import java.util.concurrent.TimeUnit
 
 /**
  *
@@ -24,6 +25,8 @@ object CoroutinedSushi : Exercise {
         println("Let's make some Sushi! ${Thread.currentThread()}")
 
         val context = newSingleThreadContext("sushi")
+
+        withTimeout(8, TimeUnit.SECONDS) {
             val j = launch(context) {
                 val job = launch(context) { cookRice() }
                 prepareVegetables()
@@ -32,6 +35,10 @@ object CoroutinedSushi : Exercise {
                 rollTheSushi()
             }
             j.join()
+        }
+
+        println("Bon Appétit! ${Thread.currentThread()}")
+
     }
 
     const val LONG_TIME = 10_000L
